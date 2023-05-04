@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="auction">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="AuctionDAO" />
+              <option name="daoPackage" value="generate" />
+              <option name="daoPostfix" value="DAO" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Auction" />
+              <option name="modelPackage" value="cn.auctoin.entity" />
+              <option name="name" value="auction" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="auctionId" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="auction" />
+              <option name="useActualColumnNames" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="auctionrecord">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="AuctionrecordDAO" />
+              <option name="daoPackage" value="generate" />
+              <option name="daoPostfix" value="DAO" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Auctionrecord" />
+              <option name="modelPackage" value="cn.auctoin.entity" />
+              <option name="name" value="auctionrecord" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="auctionrecord" />
+              <option name="useActualColumnNames" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="auctionuser">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="AuctionuserDAO" />
+              <option name="daoPackage" value="generate" />
+              <option name="daoPostfix" value="DAO" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Auctionuser" />
+              <option name="modelPackage" value="cn.auctoin.entity" />
+              <option name="name" value="auctionuser" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="userId" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="auctionuser" />
+              <option name="useActualColumnNames" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

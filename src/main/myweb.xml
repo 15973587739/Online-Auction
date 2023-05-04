@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<auction>
+    <controllers>
+        <controller path="/auction" class="cn.auction.web.AuctionController">
+            <method path="/addAuction">addAuction</method>
+            <method path="/auctionBid">addAuctionRecord</method>
+            <method path="/auctionDetail">addAuctionDetail</method>
+            <method path="/auctionList">addAuctionList</method>
+            <method path="/auctionResult">addAuctionResult</method>
+        </controller>
+        <controller path="/user" class="cn.auction.web.UserController">
+            <method path="/doRegister">doRegister</method>
+            <method path="/doLogin">doLogin</method>
+            <method path="/doAdminLogin">doAdminLogin</method>
+            <method path="/doLogout">doLogout</method>
+        </controller>
+    </controllers>
+</auction>
