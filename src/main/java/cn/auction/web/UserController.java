@@ -7,6 +7,7 @@ import cn.auction.entity.AuctionUser;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -17,6 +18,14 @@ import java.io.IOException;
 public class UserController {
     public static ThreadLocal<String> threadLocal = new ThreadLocal<String>();
 
+    /**
+     * 注册
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
     public String doRegister(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         try {
             AuctionUser auctionUser = new AuctionUser();
@@ -28,18 +37,19 @@ public class UserController {
             auctionUser.setUserPostNumber(request.getParameter("userpostnumber"));
             auctionUser.setUserIsAdmin(false);
             request.setAttribute("registerUser",auctionUser);
-            Object numrand = request.getSession().getAttribute("numrand");
-            if (numrand != null || !numrand.equals(request.getParameter("inputCode"))){
+            if (!request.getSession().getAttribute("numrand").equals(request.getParameter("inputCode"))){
+//            Object numrand = request.getSession().getAttribute("numrand");
+//            if (numrand != null || !numrand.equals(request.getParameter("inputCode"))){
                 return "/register.jsp?msg=validateCodeError";
             } else  {
                 UserService biz = new UserServiceImpl();
                 biz.register(auctionUser);
-                return "register:/login.jsp?msg=registerSuccess";
+                return "/login.jsp?msg=registerSuccess";
             }
         }catch (Exception e){
             e.printStackTrace();
             request.setAttribute("message",e.getMessage());
-            return "forward:/error.jsp";
+            return "/error.jsp";
         }
     }
 
@@ -57,12 +67,11 @@ public class UserController {
             }else {
                 UserService biz = new UserServiceImpl();
                 AuctionUser user = biz.login(username,userpassword);
-
                 if (user == null){
                     return "/login.jsp?msg=loginError";
                 }else {
                     request.getSession().setAttribute("user",user);
-                    return "register:/do/auction/auctionList";
+                    return "/do/auction/auctionList";
                 }
             }
         }catch (Exception e){
@@ -91,19 +100,22 @@ public class UserController {
                     return "/login.jsp?msg=loginError";
                 }else {
                     request.getSession().setAttribute("user",user);
-                    return "register:/do/auction/auctionList";
+                    return "/do/auction/auctionList";
                 }
             }
         }catch (Exception e){
             e.printStackTrace();
             request.setAttribute("message",e.getMessage());
-            return "forward:/error.jsp";
+            return "/error.jsp";
         }
     }
 
     public String doLogout(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         try {
-
+            HttpSession session = request.getSession();
+            //销毁会话
+            session.invalidate();
+            response.sendRedirect("pages/login.jsp");
             return "/login.jsp";
         }catch (Exception e){
             e.printStackTrace();

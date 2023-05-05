@@ -18,20 +18,25 @@ public class UserDaoImpl implements UserDao {
     @Override
     public AuctionUser selectUser(String username, String password, boolean isAdmin) throws SQLException {
         String userName = UserController.threadLocal.get();
-        String sql = "select * from userAnswer where userName=? and userPassword =? ";
-        return (AuctionUser) dao.executeQuery(AuctionUser.class,sql,new Object[]{username,password});
+        String sql = "select * from auctionuser where userName=? and userPassword =? ";
+        return dao.executeQueryOne(AuctionUser.class,sql,new Object[]{username,password});
     }
 
     @Override
     public void insert(AuctionUser auctionUser) throws SQLException {
-        String aql = "insert into auctionUser(userName ,userPassword ,userCardNo ,userTel , userAddress ,userPostNumber ,userIsAdmin ,userQuestion ,userAnswer)" +
-                "values (#{userName}, #{userPassword}, #{userCardNo}, #{userTel}, #{userAddress}, #{userPostNumber}, #{userIsAdmin}, #{userQuestion}, #{userAnswer})";
+        String aql = "INSERT INTO auctionuser(userName,userPassword,userCardNo," +
+                "userTel,userAddress,userPostNumber,userIsAdmin)" +
+                " VALUES(#{userName},#{userPassword},#{userCardNo}," +
+                "#{userTel},#{userAddress},#{userPostNumber},#{userIsAdmin})";
+
+//                "insert into auctionUser(userName ,userPassword ,userCardNo ,userTel , userAddress ,userPostNumber ,userIsAdmin ,userQuestion ,userAnswer)" +
+//                "values (#{userName}, #{userPassword}, #{userCardNo}, #{userTel}, #{userAddress}, #{userPostNumber}, #{userIsAdmin}, #{userQuestion}, #{userAnswer})";
         dao.executeUpdate(aql,auctionUser);
     }
 
     @Override
     public AuctionUser findById(Long id) throws SQLException {
-        String sql = "select * from actionUser where userId = ? ";
-        return (AuctionUser) dao.executeQuery(AuctionUser.class,sql,new Object[]{id});
+        String sql = "select * from auctionuser where userId = ? ";
+        return dao.executeQueryOne(AuctionUser.class,sql,new Object[]{id});
     }
 }
